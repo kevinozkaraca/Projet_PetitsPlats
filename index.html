@@ -1,104 +1,71 @@
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Les petites plats</title>
-    <script src="./fontawesome-free-6.4.0-web/js/all.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <header>
-      <img src="images/logo.png" alt="Logo du site 'Les petits plats'" />
-      <h1>Les petits plats</h1>
-    </header>
-    <main>
-      <section id="sectionRecherche">
-        <div id="barreDeRecherche">
-          <input
-            id="rechercheParMotClef"
-            type="text"
-            placeholder="Rechercher une recette"
-          />
-          <button type="submit" class="iconDeRecherche">
-            <i class="fas fa-2x fa-search"></i>
-          </button>
-        </div>
-        <div id="motClefChoisi"></div>
-        <div id="containerPourRecherche">
-          <div
-            id="rechercheParIngredient"
-            class="ensembleBouttonsRecherche"
-            data-type="ingrédients"
-          >
-            <div class="flexBoxBoutton">
-              <input
-                type="text"
-                name="ingredients"
-                class="selectionDeTag"
-                id="ingredients"
-                placeholder="Ingrédients"
-              />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les petites plats</title>
+  <script src="./fontawesome-free-6.4.0-web/js/all.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-              <div class="bouttonDeRecherche">
-                <i class="fas fa-chevron-down" id="chevronIngredients"></i>
-              </div>
-            </div>
-            <div id="ingredients-container" class="containerListes">
-              <ul id="ingredients-list" class="bloquesDeListe"></ul>
-            </div>
-          </div>
+<body>
+  <header>
+    <img src="images/logo.png" alt="Logo du site 'Les petits plats'" />
+    <h1>Les petits plats</h1>
+  </header>
+  <section id="sectionRecherche">
+    <div id="barreDeRecherche">
+      <input id="rechercheParMotClef" type="text" placeholder="Rechercher une recette" />
+      <button type="submit" class="iconDeRecherche">
+        <i class="fas fa-2x fa-search"></i>
+      </button>
+    </div>
+    <div id="motClefChoisi"></div>
+    <div id="containerPourRecherche">
+      <div id="rechercheParIngredient" class="ensembleBouttonsRecherche" data-type="ingrédients">
+        <div class="flexBoxBoutton">
+          <input type="text" name="ingredients" class="selectionDeTag" id="ingredients" placeholder="Ingrédients" />
 
-          <div
-            id="rechercheParAppareils"
-            class="ensembleBouttonsRecherche"
-            data-type="appareils"
-          >
-            <div class="flexBoxBoutton">
-              <input
-                type="text"
-                name="appareils"
-                id="appareils"
-                class="selectionDeTag"
-                placeholder="Appareils"
-              />
-              <div class="bouttonDeRecherche">
-                <i class="fas fa-chevron-down" id="chevronAppareils"></i>
-              </div>
-            </div>
-            <div id="appareils-container" class="containerListes">
-              <ul id="appareils-list" class="bloquesDeListe"></ul>
-            </div>
-          </div>
-
-          <div
-            id="rechercheParUstensiles"
-            class="ensembleBouttonsRecherche"
-            data-type="ustensiles"
-          >
-            <div class="flexBoxBoutton">
-              <input
-                type="text"
-                name="ustensiles"
-                id="ustensiles"
-                class="selectionDeTag"
-                placeholder="Ustensiles"
-              />
-
-              <div class="bouttonDeRecherche">
-                <i class="fas fa-chevron-down" id="chevronUstensiles"></i>
-              </div>
-            </div>
-            <div id="ustensiles-container" class="containerListes">
-              <ul id="ustensiles-list" class="bloquesDeListe"></ul>
-            </div>
+          <div class="bouttonDeRecherche">
+            <i class="fas fa-chevron-down" id="chevronIngredients"></i>
           </div>
         </div>
-      </section>
-      <section id="containerPourData"></section>
-    </main>
-    <script type="module" src="./script.js"></script>
-    <script type="module" src="./recipes.js"></script>
-  </body>
+        <div id="ingredients-container" class="containerListes">
+          <ul id="ingredients-list" class="bloquesDeListe"></ul>
+        </div>
+      </div>
+
+      <div id="rechercheParAppareils" class="ensembleBouttonsRecherche" data-type="appareils">
+        <div class="flexBoxBoutton">
+          <input type="text" name="appareils" id="appareils" class="selectionDeTag" placeholder="Appareils" />
+          <div class="bouttonDeRecherche">
+            <i class="fas fa-chevron-down" id="chevronAppareils"></i>
+          </div>
+        </div>
+        <div id="appareils-container" class="containerListes">
+          <ul id="appareils-list" class="bloquesDeListe"></ul>
+        </div>
+      </div>
+
+      <div id="rechercheParUstensiles" class="ensembleBouttonsRecherche" data-type="ustensiles">
+        <div class="flexBoxBoutton">
+          <input type="text" name="ustensiles" id="ustensiles" class="selectionDeTag" placeholder="Ustensiles" />
+
+          <div class="bouttonDeRecherche">
+            <i class="fas fa-chevron-down" id="chevronUstensiles"></i>
+          </div>
+        </div>
+        <div id="ustensiles-container" class="containerListes">
+          <ul id="ustensiles-list" class="bloquesDeListe"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="containerPourData"></section>
+  <script type="module" src="./scriptAlgo1.js"></script>
+  <script type="module" src="./scriptAlgo2.js"></script>
+  <script type="module" src="./recipes.js"></script>
+</body>
+
 </html>

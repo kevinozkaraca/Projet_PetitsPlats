@@ -1,0 +1,65 @@
+/*
+------------ Reset global 
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/*
+------------ Définition des couleurs 
+*/
+:root {
+  --color-light-gray: #e7e7e7;
+  --color-dark-gray: #c7bebe;
+  --color-blue: #3282f7;
+  --color-green: #68d9a4;
+  --color-red: #ed6454;
+  --color-red-title: #d04f4f;
+  --color-white: #ffffff;
+}
+/*
+------------ Définition des fonts 
+*/
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+/*
+------------ Header
+*/
+body {
+  font-family: "lato", sans-serif;
+  font-size: 25px;
+  margin: auto;
+  max-width: 1240px;
+}
+
+header {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  color: var(--color-red-title);
+}
+header img {
+  width: 50px;
+  margin-top: 50px;
+}
+header h1 {
+  margin: 0;
+}
+/*
+------------ Section recherche
+*/
