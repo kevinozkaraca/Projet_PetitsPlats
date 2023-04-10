@@ -37,6 +37,9 @@
 /*
 ------------ Header
 */
+* :focus {
+  outline: none;
+}
 body {
   font-family: "lato", sans-serif;
   font-size: 25px;
@@ -63,3 +66,88 @@ header h1 {
 /*
 ------------ Section recherche
 */
+#sectionRecherche {
+  margin: 20px 0 0 0;
+}
+#barreDeRecherche {
+  height: 69px;
+  background-color: var(--color-light-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+#rechercheParMotClef {
+  width: 1200px;
+  height: 69px;
+  background-color: var(--color-light-gray);
+  padding: 10px;
+  margin: 0;
+  border-radius: 5px;
+}
+.iconDeRecherche {
+  width: 60px;
+  height: 69px;
+  background-color: var(--color-light-gray);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#containerPourRecherche {
+  display: flex;
+  justify-self: start;
+  flex-wrap: wrap;
+}
+
+.bouttonDeRecherche {
+  margin-left: 15px;
+}
+
+.ensembleBouttonsRecherche {
+  margin-right: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  height: 69px;
+}
+.flexBoxBoutton input::placeholder {
+  color: var(--color-white);
+  font-size: 1.4em;
+}
+
+.flexBoxBoutton {
+  display: flex;
+  align-items: center;
+  height: 69px;
+  padding: 0 20px 0 20px;
+}
+
+#rechercheParIngredient {
+  background-color: var(--color-blue);
+}
+
+#rechercheParAppareils {
+  background-color: var(--color-green);
+}
+
+#rechercheParUstensiles {
+  background-color: var(--color-red);
+}
+
+.fa-chevron-down {
+  color: var(--color-white);
+  cursor: pointer;
+}
+input {
+  border: none;
+  background-color: transparent;
+}
+.selectionDeTag {
+  color: var(--color-white);
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  height: 25px;
+}
