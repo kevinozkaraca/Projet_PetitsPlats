@@ -40,10 +40,11 @@ function recipesFactory(data) {
                         ${ingredients
                     .map(
                         (ingredient) =>
-                            `<li>${ingredient.ingredient}: ${ingredient.quantity ? ingredient.quantity : ""
+                            `<li id="listeDesIngredientsLI">${ingredient.ingredient}: ${ingredient.quantity ? ingredient.quantity : ""
                             } ${ingredient.unit ? ingredient.unit : ""}</li>`
                     )
                     .join("")}
+                    
                     </ul>
                     <p class="description">${description.substring(
                         0,
@@ -55,7 +56,13 @@ function recipesFactory(data) {
         } else {
             throw new Error("Il n'y a pas d'élément");
         }
-
+        const listeDesIngredientsLI = article.querySelectorAll("#listeDesIngredientsLI");
+        if (listeDesIngredientsLI.length > 4) {
+            for (let i = 6; i < listeDesIngredientsLI.length; i++) {
+                listeDesIngredientsLI[5].innerHTML = "...";
+                listeDesIngredientsLI[i].innerHTML = "";
+            }
+        }
         return article;
     };
 

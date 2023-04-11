@@ -150,9 +150,66 @@ input {
   color: var(--color-white);
   border: none;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 15px;
   height: 25px;
 }
 /*
 ------------ Section Recettes
 */
+#containerPourData {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.recipes {
+  width: 380px;
+  height: 390px;
+  background-color: var(--color-light-gray);
+}
+
+.imageDeRecipe {
+  width: 100%;
+  height: 50%;
+  background-color: var(--color-dark-gray);
+}
+
+.textDeRecipe h2 {
+  font-size: 18px;
+  max-width: 260px;
+  padding: 0px 0px 0px 0px;
+}
+.textDeRecipe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 0px 0px 10px;
+}
+
+.informationSupplementaire {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 12px;
+  margin: 0 10px;
+}
+
+.ingredientsDeRecipe {
+  width: 55%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.description {
+  width: 45%;
+  margin: 0;
+}
+.tempsDePreparation {
+  margin: 0;
+  padding: 15px 0px 10px 0;
+  font-weight: bold;
+  width: 115px;
+}
+.ingredientsDeRecipe--hidden {
+  display: none;
+}
