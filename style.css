@@ -144,7 +144,7 @@ header h1 {
 input {
   border: none;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 18px;
 }
 .selectionDeTag {
   color: var(--color-white);
@@ -212,4 +212,16 @@ input {
 }
 .ingredientsDeRecipe--hidden {
   display: none;
+}
+
+/*
+------------ Activation
+*/
+
+.ensembleBouttonsRecherche.Active {
+  width: 630px;
+}
+
+.ensembleBouttonsRecherche.Active div input {
+  width: 600px;
 }
