@@ -8,6 +8,9 @@ const ustensilsInput = document.getElementById("ustensiles");
 const ingredientsInput = document.getElementById("ingredients");
 const ensembleBouttonsRecherche = document.querySelectorAll(".ensembleBouttonsRecherche");
 const selectionDeTag = document.querySelectorAll(".selectionDeTag");
+const listeDesIngredients = document.getElementById("listeDesIngredients");
+const listeDesAppareils = document.getElementById("listeDesAppareils");
+const listeDesUstensils = document.getElementById("listeDesUstensiles");
 
 // fonction qui permet de créer le DOM de chaque recette
 function recipesFactory(data) {
@@ -135,7 +138,7 @@ ingredientsChevron.addEventListener("click", (e) => {
     toggleList(e, 0, ingredientsInput, "Ingrédients", ingredientsChevron, [
         [appareilsInput, "Appareil", appareilsChevron],
         [ustensilsInput, "Ustensile", ustensilsChevron]
-    ])
+    ]);
     selectionDeTag[1].placeholder = "Appareil";
     selectionDeTag[2].placeholder = "Ustensile";
     appareilsChevron.style.transform = "rotate(0deg)";
@@ -149,7 +152,7 @@ appareilsChevron.addEventListener("click", (e) => {
     toggleList(e, 1, appareilsInput, "Appareils", appareilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
         [ustensilsInput, "Ustensile", ustensilsChevron]
-    ])
+    ]);
     selectionDeTag[0].placeholder = "Ingrédient";
     selectionDeTag[2].placeholder = "Ustensile";
     appareilsChevron.style.transform = "rotate(180deg)";
@@ -163,7 +166,7 @@ ustensilsChevron.addEventListener("click", (e) => {
     toggleList(e, 2, ustensilsInput, "Ustensiles", ustensilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
         [appareilsInput, "Appareil", appareilsChevron]
-    ])
+    ]);
     selectionDeTag[0].placeholder = "Ingrédient";
     selectionDeTag[1].placeholder = "Appareil";
     appareilsChevron.style.transform = "rotate(0deg)";
@@ -172,12 +175,40 @@ ustensilsChevron.addEventListener("click", (e) => {
 }
 
 );
+function affichageDesIngredients(recipes) {
+    const ingredients = recipes.flatMap((recipe) =>
+        recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
+    );
+    const uniqueIngredients = [...new Set(ingredients)].sort();
 
+    listeDesIngredients.innerHTML = uniqueIngredients
+        .map((ingredient) => {
+            return `<li class="item ingredients-result" data-value='${ingredient}'>${ingredient}</li>`;
+        })
+        .join("");
+}
+function affichageDesAppareils(recipes) {
+    const appareils = [...new Set(recipes.map(recipe => recipe.appliance.toLowerCase()))].sort();
+    listeDesAppareils.innerHTML = appareils.map(appareil => {
+        return `<li class="item appareils-result" data-value="${appareil}" >${appareil}</li>`;
+    }).join('');
+}
+function affichageDesUstensiles(recipes) {
+    const ustensils = recipes.reduce((acc, recipe) => {
+        return [...acc, ...recipe.ustensils];
+    }, []);
+    const uniqueUstensils = [...new Set(ustensils.map(ustensil => ustensil.toLowerCase()))].sort();
+    listeDesUstensils.innerHTML = uniqueUstensils.map(ustensil => {
+        return `<li class="item ustensils-result" data-value="${ustensil}" >${ustensil}</li>`;
+    }).join('');
+}
 
 // fonction de base de l'application
 async function init() {
-    affichageDesRecettes(recipes)
-
+    affichageDesRecettes(recipes);
+    affichageDesAppareils(recipes);
+    affichageDesUstensiles(recipes);
+    affichageDesIngredients(recipes);
 
 }
 

@@ -87,6 +87,8 @@ header h1 {
   margin: 0;
   border-radius: 5px;
   font-size: 16px;
+  display: flex;
+  height: 50px;
 }
 .iconDeRecherche {
   width: 60px;
@@ -213,7 +215,43 @@ input {
 .ingredientsDeRecipe--hidden {
   display: none;
 }
+/*
+------------ Les listes
+*/
 
+.bloquesDeListe {
+  list-style-type: none;
+  column-count: 3;
+  margin: 0;
+  padding: 0;
+  color: var(--color-white);
+}
+
+.bloquesDeListe li:hover {
+  transform: scaleX(1.1);
+}
+
+.bloquesDeListe li {
+  margin: 10px;
+}
+.containerListes {
+  transform: scale(0);
+  position: absolute;
+  z-index: 1;
+  top: 350px;
+  background-color: inherit;
+  border-radius: 0 0 5px 5px;
+  width: 630px;
+  max-height: 400px;
+  padding: 18px 25px 15px 25px;
+  overflow-y: auto;
+  transition: transform 300ms;
+  transform-origin: top left;
+  font-size: 20px;
+}
+.bloquesDeListe li {
+  cursor: pointer;
+}
 /*
 ------------ Activation
 */
@@ -223,5 +261,12 @@ input {
 }
 
 .ensembleBouttonsRecherche.Active div input {
-  width: 600px;
+  width: 630px;
+}
+.ensembleBouttonsRecherche.active .containerListes {
+  transform: scale(1);
+}
+
+.ensembleBouttonsRecherche.active {
+  width: 630px;
 }
