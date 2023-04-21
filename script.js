@@ -209,8 +209,5 @@ async function init() {
     affichageDesAppareils(recipes);
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
-
 }
-
-
 init();
