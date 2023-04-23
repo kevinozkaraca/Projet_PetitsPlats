@@ -15,16 +15,7 @@ const listeDesUstensils = document.getElementById("listeDesUstensiles");
 // fonction qui permet de créer le DOM de chaque recette
 function recipesFactory(data) {
     // destructuring de l'objet data
-    const {
-        id,
-        name,
-        servings,
-        ingredients,
-        time,
-        description,
-        appliance,
-        ustensils,
-    } = data;
+    const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
     // fonction qui permet de créer le DOM de chaque recette
     const getRecipesDOM = () => {
@@ -57,10 +48,7 @@ function recipesFactory(data) {
                     .join("")}
                     
                     </ul>
-                    <p class="description">${description.substring(
-                        0,
-                        175
-                    )}${description.length > 175 ? "..." : ""}</p>
+                    <p class="description">${description.substring(0, 175)}${description.length > 175 ? "..." : ""}</p>
                 </div>
             </div>
         `;
@@ -108,7 +96,7 @@ function closeList(ensembleBouttonsRecherche) {
     ensembleBouttonsRecherche.classList.remove("Active");
 }
 
-// fonction qui permet de d'utiliser les chevrons 
+// fonction qui permet de d'utiliser les chevrons
 function toggleList(e, index, input, placeholder, chevron, placeholders) {
     const activeClass = "Active";
     const otherIndexes = [0, 1, 2].filter((i) => i !== index);
@@ -118,63 +106,54 @@ function toggleList(e, index, input, placeholder, chevron, placeholders) {
         closeList(ensembleBouttonsRecherche[index]);
         input.placeholder = placeholder;
         chevron.classList.remove(activeClass);
-
-
     } else {
         openList(ensembleBouttonsRecherche[index]);
         input.placeholder = `Rechercher un ${placeholder.toLowerCase()}`;
         chevron.classList.add(activeClass);
         otherensembleBouttonsRecherche.forEach((css) => closeList(css));
         placeholders.forEach(([input, placeholder, chevron], i) => {
-            input.placeholder = (i === index) ? placeholder : input.placeholder;
+            input.placeholder = i === index ? placeholder : input.placeholder;
             chevron.classList.toggle(activeClass, i === index);
         });
     }
-
-
 }
 
 ingredientsChevron.addEventListener("click", (e) => {
     toggleList(e, 0, ingredientsInput, "Ingrédients", ingredientsChevron, [
         [appareilsInput, "Appareil", appareilsChevron],
-        [ustensilsInput, "Ustensile", ustensilsChevron]
+        [ustensilsInput, "Ustensile", ustensilsChevron],
     ]);
     selectionDeTag[1].placeholder = "Appareil";
     selectionDeTag[2].placeholder = "Ustensile";
     appareilsChevron.style.transform = "rotate(0deg)";
     ustensilsChevron.style.transform = "rotate(0deg)";
     ingredientsChevron.style.transform = "rotate(180deg)";
-}
-
-);
+});
 
 appareilsChevron.addEventListener("click", (e) => {
     toggleList(e, 1, appareilsInput, "Appareils", appareilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
-        [ustensilsInput, "Ustensile", ustensilsChevron]
+        [ustensilsInput, "Ustensile", ustensilsChevron],
     ]);
     selectionDeTag[0].placeholder = "Ingrédient";
     selectionDeTag[2].placeholder = "Ustensile";
     appareilsChevron.style.transform = "rotate(180deg)";
     ustensilsChevron.style.transform = "rotate(0deg)";
     ingredientsChevron.style.transform = "rotate(0deg)";
-}
-
-);
+});
 
 ustensilsChevron.addEventListener("click", (e) => {
     toggleList(e, 2, ustensilsInput, "Ustensiles", ustensilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
-        [appareilsInput, "Appareil", appareilsChevron]
+        [appareilsInput, "Appareil", appareilsChevron],
     ]);
     selectionDeTag[0].placeholder = "Ingrédient";
     selectionDeTag[1].placeholder = "Appareil";
     appareilsChevron.style.transform = "rotate(0deg)";
     ustensilsChevron.style.transform = "rotate(180deg)";
     ingredientsChevron.style.transform = "rotate(0deg)";
-}
+});
 
-);
 function affichageDesIngredients(recipes) {
     const ingredients = recipes.flatMap((recipe) =>
         recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
@@ -188,19 +167,23 @@ function affichageDesIngredients(recipes) {
         .join("");
 }
 function affichageDesAppareils(recipes) {
-    const appareils = [...new Set(recipes.map(recipe => recipe.appliance.toLowerCase()))].sort();
-    listeDesAppareils.innerHTML = appareils.map(appareil => {
-        return `<li class="item appareils-result" data-value="${appareil}" >${appareil}</li>`;
-    }).join('');
+    const appareils = [...new Set(recipes.map((recipe) => recipe.appliance.toLowerCase()))].sort();
+    listeDesAppareils.innerHTML = appareils
+        .map((appareil) => {
+            return `<li class="item appareils-result" data-value="${appareil}" >${appareil}</li>`;
+        })
+        .join("");
 }
 function affichageDesUstensiles(recipes) {
     const ustensils = recipes.reduce((acc, recipe) => {
         return [...acc, ...recipe.ustensils];
     }, []);
-    const uniqueUstensils = [...new Set(ustensils.map(ustensil => ustensil.toLowerCase()))].sort();
-    listeDesUstensils.innerHTML = uniqueUstensils.map(ustensil => {
-        return `<li class="item ustensils-result" data-value="${ustensil}" >${ustensil}</li>`;
-    }).join('');
+    const uniqueUstensils = [...new Set(ustensils.map((ustensil) => ustensil.toLowerCase()))].sort();
+    listeDesUstensils.innerHTML = uniqueUstensils
+        .map((ustensil) => {
+            return `<li class="item ustensils-result" data-value="${ustensil}" >${ustensil}</li>`;
+        })
+        .join("");
 }
 
 // fonction de base de l'application
