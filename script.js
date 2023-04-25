@@ -11,12 +11,16 @@ const selectionDeTag = document.querySelectorAll(".selectionDeTag");
 const listeDesIngredients = document.getElementById("listeDesIngredients");
 const listeDesAppareils = document.getElementById("listeDesAppareils");
 const listeDesUstensils = document.getElementById("listeDesUstensiles");
+const rechercheParMotClef = document.getElementById("rechercheParMotClef");
+const containerPourData = document.querySelector("#containerPourData");
+let tagArrayselected = [];
+let filterrecipes = [];
+let NouvelleListeRecipes = [];
 
 // fonction qui permet de créer le DOM de chaque recette
 function recipesFactory(data) {
     // destructuring de l'objet data
     const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
-
     // fonction qui permet de créer le DOM de chaque recette
     const getRecipesDOM = () => {
         const article = document.createElement("article");
@@ -64,7 +68,6 @@ function recipesFactory(data) {
         }
         return article;
     };
-
     return {
         id,
         name,
@@ -117,7 +120,6 @@ function toggleList(e, index, input, placeholder, chevron, placeholders) {
         });
     }
 }
-
 ingredientsChevron.addEventListener("click", (e) => {
     toggleList(e, 0, ingredientsInput, "Ingrédients", ingredientsChevron, [
         [appareilsInput, "Appareil", appareilsChevron],
@@ -129,7 +131,6 @@ ingredientsChevron.addEventListener("click", (e) => {
     ustensilsChevron.style.transform = "rotate(0deg)";
     ingredientsChevron.style.transform = "rotate(180deg)";
 });
-
 appareilsChevron.addEventListener("click", (e) => {
     toggleList(e, 1, appareilsInput, "Appareils", appareilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
@@ -141,7 +142,6 @@ appareilsChevron.addEventListener("click", (e) => {
     ustensilsChevron.style.transform = "rotate(0deg)";
     ingredientsChevron.style.transform = "rotate(0deg)";
 });
-
 ustensilsChevron.addEventListener("click", (e) => {
     toggleList(e, 2, ustensilsInput, "Ustensiles", ustensilsChevron, [
         [ingredientsInput, "Ingrédient", ingredientsChevron],
@@ -153,7 +153,6 @@ ustensilsChevron.addEventListener("click", (e) => {
     ustensilsChevron.style.transform = "rotate(180deg)";
     ingredientsChevron.style.transform = "rotate(0deg)";
 });
-
 function affichageDesIngredients(recipes) {
     const ingredients = recipes.flatMap((recipe) =>
         recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
@@ -185,12 +184,69 @@ function affichageDesUstensiles(recipes) {
         })
         .join("");
 }
+// fonction générale de filtre des recettes
+function filtrerLesRecettes(recipes, entree, type) {
+    const tousLesInputs = document.querySelectorAll("input");
+    const tousLesElementsDeLaListe = document.querySelectorAll("li");
+    for (let i = 0; i < tousLesInputs.length; i++) {
+        tousLesInputs[i].addEventListener("input", () => {
+            // L'entrée de l'utilisateur est un tableau de string qui contient les mots clés
+            const entree = [...tousLesInputs].map((input) => input.value.toLowerCase());
+            if (entree[i] != "") {
+                // recherche par mot clé
+                if (i == 0) {
+                    const recettesFiltrees = recipes.filter((recipe) => {
+                        const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
+                        const ustensils = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
+                        return (
+                            recipe.name.toLowerCase().includes(entree[i]) ||
+                            ingredients.some((ingredient) => ingredient.includes(entree[i])) ||
+                            recipe.appliance.toLowerCase().includes(entree[i]) ||
+                            ustensils.some((ustensil) => ustensil.includes(entree[i]))
+                        );
+                    });
+                    affichageDesRecettes(recettesFiltrees);
+                }
+                //recherche par ingrédient
+                if (i == 1) {
+                    const recettesFiltrees = recipes.filter((recipe) => {
+                        const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
+                        return ingredients.some((ingredient) => ingredient.includes(entree[i]));
+                    });
+                    affichageDesRecettes(recettesFiltrees);
+                }
+                //recherche par appareil
+                if (i == 2) {
+                    const recettesFiltrees = recipes.filter((recipe) => {
+                        return recipe.appliance.toLowerCase().includes(entree[i]);
+                    });
+                    affichageDesRecettes(recettesFiltrees);
+                }
+                //recherche par ustensile
+                if (i == 3) {
+                    const recettesFiltrees = recipes.filter((recipe) => {
+                        const ustensils = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
+                        return ustensils.some((ustensil) => ustensil.includes(entree[i]));
+                    });
+                    affichageDesRecettes(recettesFiltrees);
+                }
+            } else {
+                affichageDesRecettes(recipes);;
+            }
+        });
+    }
 
+}
+
+
+
+// fonction qui permet de supprimer les tags
 // fonction de base de l'application
 async function init() {
     affichageDesRecettes(recipes);
     affichageDesAppareils(recipes);
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
+    filtrerLesRecettes(recipes);
 }
 init();
