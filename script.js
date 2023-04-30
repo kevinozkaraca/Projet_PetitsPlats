@@ -161,7 +161,7 @@ function affichageDesIngredients(recipes) {
 
     listeDesIngredients.innerHTML = uniqueIngredients
         .map((ingredient) => {
-            return `<li class="item ingredients-result" data-value='${ingredient}'>${ingredient}</li>`;
+            return `<li class="item ingredients-result" data-value="${ingredient}">${ingredient}</li>`;
         })
         .join("");
 }
@@ -188,12 +188,11 @@ function affichageDesUstensiles(recipes) {
 function filtrerLesRecettes(recipes, entree, type) {
     const tousLesInputs = document.querySelectorAll("input");
     const tousLesElementsDeLaListe = document.querySelectorAll("li");
+    entree = [...tousLesInputs].map((input) => input.value.toLowerCase());
     for (let i = 0; i < tousLesInputs.length; i++) {
         tousLesInputs[i].addEventListener("input", () => {
-            // L'entrée de l'utilisateur est un tableau de string qui contient les mots clés
-            const entree = [...tousLesInputs].map((input) => input.value.toLowerCase());
             if (entree[i] != "") {
-                // recherche par mot clé
+
                 if (i == 0) {
                     const recettesFiltrees = recipes.filter((recipe) => {
                         const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
@@ -235,8 +234,50 @@ function filtrerLesRecettes(recipes, entree, type) {
             }
         });
     }
-
+    // fonction qui permet de filtrer les recettes en fonction des tags
+    let toutesLesEntrees = [];
+    for (let i = 0; i < tousLesElementsDeLaListe.length; i++) {
+        tousLesElementsDeLaListe[i].addEventListener("click", (e) => {
+            const entree = e.target.innerText;
+            toutesLesEntrees.push(entree);
+            // filtrer les recettes en fonction des tags
+            const recettesFiltrees = recipes.filter((recipe) => {
+                const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
+                const ustensils = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
+                return (
+                    recipe.name.toLowerCase().includes(entree) ||
+                    ingredients.some((ingredient) => ingredient.includes(entree)) ||
+                    recipe.appliance.toLowerCase().includes(entree) ||
+                    ustensils.some((ustensil) => ustensil.includes(entree))
+                );
+            });
+            affichageDesRecettes(recettesFiltrees);
+            // afficher les tags
+            const tag = document.createElement("div");
+            const motClefChoisi = document.querySelector("#motClefChoisi");
+            tag.classList.add("tag");
+            tag.innerHTML = `   <p class="tag-text">${entree}</p>
+                                <button class="tag-close">
+                                    <i class="fas fa-times"></i>
+                                </button>`;
+            motClefChoisi.appendChild(tag);
+            // supprimer les tags
+            const tagClose = document.querySelectorAll(".tag-close");
+            for (let i = 0; i < tagClose.length; i++) {
+                tagClose[i].addEventListener("click", () => {
+                    tag.remove();
+                    toutesLesEntrees.splice(i, 1);
+                    if (toutesLesEntrees.length == 0) {
+                        affichageDesRecettes(recipes);
+                    }
+                });
+            }
+        });
+    }
 }
+
+
+
 
 
 
