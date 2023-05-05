@@ -1,5 +1,6 @@
 import recipes from "./recipes.js";
 import filtreGeneralDesRecettes from "./fonctions/filtreGeneralDesRecettes.js";
+import affichageEtSuppressionDesTags from "./fonctions/affichageEtSuppressionDesTags.js";
 const recipesSection = document.querySelector("#containerPourData");
 const appareilsChevron = document.getElementsByClassName("bouttonDeRecherche")[1];
 const ustensilsChevron = document.getElementsByClassName("bouttonDeRecherche")[2];
@@ -161,7 +162,7 @@ function affichageDesIngredients(recipes) {
 
     listeDesIngredients.innerHTML = uniqueIngredients
         .map((ingredient) => {
-            return `<li class="item ingredients-result" data-value='${ingredient}'>${ingredient}</li>`;
+            return `<li class="item ingredients-result" data-value="${ingredient}" >${ingredient}</li> `;
         })
         .join("");
 }
@@ -169,7 +170,7 @@ function affichageDesAppareils(recipes) {
     const appareils = [...new Set(recipes.map((recipe) => recipe.appliance.toLowerCase()))].sort();
     listeDesAppareils.innerHTML = appareils
         .map((appareil) => {
-            return `<li class="item appareils-result" data-value="${appareil}" >${appareil}</li>`;
+            return `<li li class="item appareils-result" data - value="${appareil}" > ${appareil}</li > `;
         })
         .join("");
 }
@@ -180,13 +181,10 @@ function affichageDesUstensiles(recipes) {
     const uniqueUstensils = [...new Set(ustensils.map((ustensil) => ustensil.toLowerCase()))].sort();
     listeDesUstensils.innerHTML = uniqueUstensils
         .map((ustensil) => {
-            return `<li class="item ustensils-result" data-value="${ustensil}" >${ustensil}</li>`;
+            return `< li li class= "item ustensils-result" data - value="${ustensil}" > ${ustensil}</li > `;
         })
         .join("");
 }
-
-
-
 
 // fonction de base de l'application
 async function init() {
@@ -195,8 +193,8 @@ async function init() {
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
     filtreGeneralDesRecettes(recipes);
-
+    affichageEtSuppressionDesTags();
 }
 init();
 
-export { affichageDesRecettes };
+export { affichageDesRecettes };;;;;
