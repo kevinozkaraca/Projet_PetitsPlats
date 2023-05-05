@@ -170,7 +170,7 @@ function affichageDesAppareils(recipes) {
     const appareils = [...new Set(recipes.map((recipe) => recipe.appliance.toLowerCase()))].sort();
     listeDesAppareils.innerHTML = appareils
         .map((appareil) => {
-            return `<li li class="item appareils-result" data - value="${appareil}" > ${appareil}</li > `;
+            return `<li  class="item appareils-result" data - value="${appareil}" >${appareil}</li > `;
         })
         .join("");
 }
@@ -181,7 +181,7 @@ function affichageDesUstensiles(recipes) {
     const uniqueUstensils = [...new Set(ustensils.map((ustensil) => ustensil.toLowerCase()))].sort();
     listeDesUstensils.innerHTML = uniqueUstensils
         .map((ustensil) => {
-            return `< li li class= "item ustensils-result" data - value="${ustensil}" > ${ustensil}</li > `;
+            return `<li class="item ustensils-result" data - value="${ustensil}" >${ustensil}</li > `;
         })
         .join("");
 }
@@ -193,7 +193,7 @@ async function init() {
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
     filtreGeneralDesRecettes(recipes);
-    affichageEtSuppressionDesTags();
+    await affichageEtSuppressionDesTags();
 }
 init();
 
