@@ -2,7 +2,7 @@ import recipes from "./recipes.js";
 import filtreGeneralDesRecettes from "./fonctions/filtreGeneralDesRecettes.js";
 import affichageEtSuppressionDesTags from "./fonctions/affichageEtSuppressionDesTags.js";
 import filtreDesInputsDeCouleur from "./fonctions/filtreDesInputsDeCouleur.js";
-const recipesSection = document.querySelector("#containerPourData");
+import filtreParTags from "./fonctions/filtreParTags.js";
 const appareilsChevron = document.getElementsByClassName("bouttonDeRecherche")[1];
 const ustensilsChevron = document.getElementsByClassName("bouttonDeRecherche")[2];
 const ingredientsChevron = document.getElementsByClassName("bouttonDeRecherche")[0];
@@ -14,7 +14,6 @@ const selectionDeTag = document.querySelectorAll(".selectionDeTag");
 const listeDesIngredients = document.getElementById("listeDesIngredients");
 const listeDesAppareils = document.getElementById("listeDesAppareils");
 const listeDesUstensils = document.getElementById("listeDesUstensiles");
-const listeDesIngredientsLI = document.querySelectorAll("#listeDesIngredientsLI");
 
 // fonction qui permet de créer le DOM de chaque recette
 function recipesFactory(data) {
@@ -197,6 +196,7 @@ async function init() {
     filtreGeneralDesRecettes(recipes);
     affichageEtSuppressionDesTags();
     filtreDesInputsDeCouleur();
+    filtreParTags();
 }
 init();
 

@@ -6,14 +6,13 @@ function affichageEtSuppressionDesTags(recipes) {
     tags.forEach((tag) => {
         tag.addEventListener("click", (e) => {
             const tagAfiltrer = e.target.innerText;
-            console.log(e.target.innerHTML);
             const classOfTag = e.target.classList[1];
             if (tagsValues.includes(tagAfiltrer)) {
                 tagsContainer.innerHTML += `<span class="tag ${classOfTag}">${tagAfiltrer} <i class="fa-regular fa-circle-xmark"></i></span>`;
                 const closeBtn = document.querySelectorAll(".tag");
                 closeBtn.forEach((btn) => {
-                    btn.addEventListener("click", (e) => {
-                        e.target.parentElement.remove();
+                    btn.addEventListener("click", () => {
+                        btn.remove();
                     });
                 });
             }
