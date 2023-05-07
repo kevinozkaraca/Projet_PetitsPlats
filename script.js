@@ -1,6 +1,7 @@
 import recipes from "./recipes.js";
 import filtreGeneralDesRecettes from "./fonctions/filtreGeneralDesRecettes.js";
 import affichageEtSuppressionDesTags from "./fonctions/affichageEtSuppressionDesTags.js";
+import filtreDesInputsDeCouleur from "./fonctions/filtreDesInputsDeCouleur.js";
 const recipesSection = document.querySelector("#containerPourData");
 const appareilsChevron = document.getElementsByClassName("bouttonDeRecherche")[1];
 const ustensilsChevron = document.getElementsByClassName("bouttonDeRecherche")[2];
@@ -193,7 +194,8 @@ async function init() {
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
     filtreGeneralDesRecettes(recipes);
-    await affichageEtSuppressionDesTags();
+    affichageEtSuppressionDesTags();
+    filtreDesInputsDeCouleur();
 }
 init();
 

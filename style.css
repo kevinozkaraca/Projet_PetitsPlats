@@ -111,9 +111,10 @@ header h1 {
 
 .ensembleBouttonsRecherche {
   margin-right: 20px;
-  margin-top: 20px;
   border-radius: 5px;
   height: 69px;
+  position: relative;
+  top: 20px;
 }
 .flexBoxBoutton input::placeholder {
   color: var(--color-white);
@@ -238,7 +239,7 @@ input {
   transform: scale(0);
   position: absolute;
   z-index: 1;
-  top: 350px;
+  top: 55px;
   background-color: inherit;
   border-radius: 0 0 5px 5px;
   width: 630px;
@@ -269,4 +270,28 @@ input {
 
 .ensembleBouttonsRecherche.active {
   width: 630px;
+}
+/*
+------------ Tags
+*/
+
+.tag {
+  font-size: 15px;
+  padding: 10px;
+  color: #ffffff;
+  margin: 5px;
+  border-radius: 5px;
+}
+.tag i {
+  margin-left: 3px;
+  cursor: pointer;
+}
+.ingredients-result {
+  background-color: var(--color-blue);
+}
+.appareils-result {
+  background-color: var(--color-green);
+}
+.ustensils-result {
+  background-color: var(--color-red);
 }
