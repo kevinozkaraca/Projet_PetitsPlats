@@ -7,7 +7,7 @@ function filtreDesInputsDeCouleur() {
     const ingredientsChevron = document.getElementsByClassName("bouttonDeRecherche")[0];
     input[0].addEventListener("keyup", (e) => {
         const value = e.target.value.toLowerCase();
-        if (value.length == 3) {
+        if (value.length == 1) {
             ingredientsChevron.click();
         }
         list[0].querySelectorAll("li").forEach((li) => {
@@ -20,8 +20,9 @@ function filtreDesInputsDeCouleur() {
     }
     );
     input[1].addEventListener("keyup", (e) => {
+        e.preventDefault();
         const value = e.target.value.toLowerCase();
-        if (value.length == 3) {
+        if (value.length == 1) {
             appareilsChevron.click();
         }
         list[1].querySelectorAll("li").forEach((li) => {
@@ -33,9 +34,10 @@ function filtreDesInputsDeCouleur() {
         });
     }
     );
+
     input[2].addEventListener("keyup", (e) => {
         const value = e.target.value.toLowerCase();
-        if (value.length == 3) {
+        if (value.length == 1) {
             ustensilsChevron.click();
         }
         list[2].querySelectorAll("li").forEach((li) => {
