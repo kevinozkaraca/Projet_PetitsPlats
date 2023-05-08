@@ -194,10 +194,9 @@ async function init() {
     affichageDesUstensiles(recipes);
     affichageDesIngredients(recipes);
     filtreGeneralDesRecettes(recipes);
-    affichageEtSuppressionDesTags();
     filtreDesInputsDeCouleur();
-    filtreParTags();
+    affichageEtSuppressionDesTags();
 }
 init();
 
-export { affichageDesRecettes };;;;;
+export { affichageDesRecettes };

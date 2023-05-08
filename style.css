@@ -281,10 +281,10 @@ input {
   color: #ffffff;
   margin: 5px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .tag i {
   margin-left: 3px;
-  cursor: pointer;
 }
 .ingredients-result {
   background-color: var(--color-blue);

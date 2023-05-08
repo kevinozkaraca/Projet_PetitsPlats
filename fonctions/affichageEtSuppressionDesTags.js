@@ -1,5 +1,6 @@
+import filtreParTags from "./filtreParTags.js";
 // fonction qui permet d'afficher les tags
-function affichageEtSuppressionDesTags(recipes) {
+function affichageEtSuppressionDesTags() {
     const tagsContainer = document.querySelector("#motClefChoisi");
     const tags = document.querySelectorAll("li");
     const tagsValues = [...tags].map((tag) => tag.innerText);
@@ -10,9 +11,11 @@ function affichageEtSuppressionDesTags(recipes) {
             if (tagsValues.includes(tagAfiltrer)) {
                 tagsContainer.innerHTML += `<span class="tag ${classOfTag}">${tagAfiltrer} <i class="fa-regular fa-circle-xmark"></i></span>`;
                 const closeBtn = document.querySelectorAll(".tag");
+                filtreParTags();
                 closeBtn.forEach((btn) => {
                     btn.addEventListener("click", () => {
                         btn.remove();
+                        filtreParTags();
                     });
                 });
             }
