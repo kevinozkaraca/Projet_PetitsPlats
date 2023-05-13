@@ -3,25 +3,59 @@ import { affichageDesRecettes } from "../script.js";
 // Description: Permet de filtrer les recettes par tags
 function filtreParTags() {
     // récupération des tags
-    const motClefChoisi = document.querySelector("#motClefChoisi");
-    let ensembleDesTags = [];
-    let tag = document.querySelectorAll(".tag");
-    let recettesFiltrees;
-    let tags = [];
-    // récupération des tags
-    if (motClefChoisi.value) {
-        tags.push(motClefChoisi.value);
-        // filtre des recettes par tags
-        recettesFiltrees = recipes.filter((recette) => {
-            return tags.every((tag) => {
-                return recette.tags.includes(tag);
-            });
+    let tags = document.querySelectorAll(".tag");
+    if (tags.length > 0) {
+        for (let i = 0; i < tags.length; i++) {
+            console.log(tags[i].innerText);
+            // filtrer en fonction de la class du tags
+            if (tags[i].classList[1] == "ingredients-result") {
+                const valeur = [];
+                valeur.push(tags[i].innerText.toLowerCase());
+                // filtre les recettes par ingredients
+                const recettesFiltrees = recipes.filter((recipe) => {
+                    const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
+                    return (
+                        ingredients.some((ingredient) => ingredient.includes(valeur))
+                    );
+                });
+
+                affichageDesRecettes(recettesFiltrees);
+            }
+            if (tags[i].classList[1] == "appareils-result") {
+                const valeur = [];
+                valeur.push(tags[i].innerText.toLowerCase());
+                // filtre les recettes par appareils
+                const recettesFiltrees = recipes.filter((recipe) => {
+                    const appareils = recipe.appliance.toLowerCase();
+                    return (
+                        appareils.includes(valeur)
+                    );
+                });
+
+                affichageDesRecettes(recettesFiltrees);
+            }
+            if (tags[i].classList[1] == "ustensiles-result") {
+                const valeur = [];
+                valeur.push(tags[i].innerText.toLowerCase());
+                // filtre les recettes par ustensiles
+                const recettesFiltrees = recipes.filter((recipe) => {
+                    const ustensiles = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
+                    return (
+                        ustensiles.some((ustensil) => ustensil.includes(valeur))
+                    );
+                });
+                affichageDesRecettes(recettesFiltrees);
+
+            }
         }
-        );
+    } else {
+        affichageDesRecettes(recipes);
     }
 
-    console.log(recettesFiltrees);
-    console.log(ensembleDesTags);
+
+
+
 }
+
 
 export default filtreParTags;

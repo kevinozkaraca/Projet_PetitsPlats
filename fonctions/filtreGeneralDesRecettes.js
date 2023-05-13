@@ -5,11 +5,9 @@ function filtreGeneralDesRecettes(recipes) {
     const rechercheIngredient = document.querySelector("#ingredients");
     const rechercheAppareil = document.querySelector("#appareils");
     const rechercheUstensile = document.querySelector("#ustensiles");
-    const tousLesInputs = [rechercheInput, rechercheIngredient, rechercheAppareil, rechercheUstensile];
     const listeDesAppareils = document.querySelector("#listeDesAppareils");
     const listeDesIngredients = document.querySelector("#listeDesIngredients");
     const listeDesUstensils = document.querySelector("#listeDesUstensils");
-    const listePourRecherche = [listeDesIngredients, listeDesAppareils, listeDesUstensils];
     // Filtrer les recettes par mot clé
     rechercheInput.addEventListener("input", (e) => {
         const valeur = e.target.value.toLowerCase();

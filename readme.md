@@ -69,3 +69,50 @@ console.log(motsLongueurSup4); // Résultat : ['chien', 'oiseau', 'souris', 'ele
 ```
 
 Dans cet exemple, nous avons utilisé une fonction fléchée pour définir le critère de filtrage, c'est-à-dire que nous avons filtré les mots dont la longueur est supérieure à 4.
+
+## Fonction Map
+
+En JavaScript, la fonction map() est une méthode intégrée pour les tableaux. Elle permet de créer un nouveau tableau en appliquant une transformation à chaque élément du tableau d'origine.
+
+La syntaxe générale de la fonction map() en JavaScript est la suivante :
+
+```javascript
+array.map(callback(element, index, array), thisArg);
+```
+
+où array est le tableau sur lequel la fonction map() est appliquée, callback est une fonction qui prend trois arguments (l'élément courant, l'index de l'élément courant et le tableau lui-même) et renvoie la valeur transformée, et thisArg (facultatif) est la valeur à utiliser comme this lorsque la fonction callback est exécutée.
+
+Voici un exemple pour illustrer son fonctionnement :
+
+```javascript
+// Fonction de transformation pour doubler les nombres
+function doubler(nombre) {
+  return nombre * 2;
+}
+
+// Tableau de nombres
+var nombres = [1, 2, 3, 4, 5];
+
+// Transformation des nombres en les doublant
+var nombresDoubles = nombres.map(doubler);
+
+// Affichage du résultat
+console.log(nombresDoubles); // Résultat : [2, 4, 6, 8, 10]
+```
+
+Dans cet exemple, nous avons défini une fonction doubler qui multiplie un nombre par 2. Ensuite, nous avons appliqué la méthode map() au tableau nombres en passant doubler comme argument. La méthode map() renvoie un nouveau tableau contenant les valeurs transformées, dans ce cas les nombres doublés.
+
+La fonction map() peut également être utilisée avec une fonction fléchée (arrow function) pour un code plus concis. Voici un exemple similaire au précédent en utilisant une fonction fléchée pour transformer les mots d'un tableau en leur longueur :
+
+```javascript
+// Tableau de mots
+var mots = ["chat", "chien", "oiseau"];
+
+// Transformation des mots en leur longueur
+var longueurs = mots.map((mot) => mot.length);
+
+// Affichage du résultat
+console.log(longueurs); // Résultat : [4, 5, 6]
+```
+
+Dans cet exemple, nous avons utilisé une fonction fléchée pour définir la transformation, c'est-à-dire que nous avons transformé chaque mot en sa longueur en utilisant mot.length.
