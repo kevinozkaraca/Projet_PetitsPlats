@@ -20,7 +20,6 @@ function filtreDesInputsDeCouleur() {
     }
     );
     input[1].addEventListener("keyup", (e) => {
-        e.preventDefault();
         const value = e.target.value.toLowerCase();
         if (value.length == 1) {
             appareilsChevron.click();
@@ -49,8 +48,5 @@ function filtreDesInputsDeCouleur() {
         });
     }
     );
-
-
 }
-
 export default filtreDesInputsDeCouleur;

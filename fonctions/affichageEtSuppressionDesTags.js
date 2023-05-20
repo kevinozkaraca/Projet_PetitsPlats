@@ -8,17 +8,18 @@ function affichageEtSuppressionDesTags() {
         tag.addEventListener("click", (e) => {
             const tagAfiltrer = e.target.innerText;
             const classOfTag = e.target.classList[1];
+            // si deux tags sont identiques, on ne l'affiche pas
             if (tagsValues.includes(tagAfiltrer)) {
                 tagsContainer.innerHTML += `<span class="tag ${classOfTag}">${tagAfiltrer} <i class="fa-regular fa-circle-xmark"></i></span>`;
-                const closeBtn = document.querySelectorAll(".tag");
                 filtreParTags();
-                closeBtn.forEach((btn) => {
-                    btn.addEventListener("click", () => {
-                        btn.remove();
-                        filtreParTags();
-                    });
-                });
             }
+            const closeBtn = document.querySelectorAll(".tag");
+            closeBtn.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    btn.remove();
+                    filtreParTags();
+                });
+            });
         }
         );
     });

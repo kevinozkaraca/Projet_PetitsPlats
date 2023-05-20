@@ -4,9 +4,11 @@ import { affichageDesRecettes } from "../script.js";
 function filtreParTags() {
     // récupération des tags
     let tags = document.querySelectorAll(".tag");
-    if (tags.length > 0) {
+    // si il y a des tags
+    if (tags.length <= 1) {
+        // si deux tags sont identiques, on supprime le deuxième
+        console.log("Appelle de la fonction");
         for (let i = 0; i < tags.length; i++) {
-            console.log(tags[i].innerText);
             // filtrer en fonction de la class du tags
             if (tags[i].classList[1] == "ingredients-result") {
                 const valeur = [];
@@ -18,7 +20,6 @@ function filtreParTags() {
                         ingredients.some((ingredient) => ingredient.includes(valeur))
                     );
                 });
-
                 affichageDesRecettes(recettesFiltrees);
             }
             if (tags[i].classList[1] == "appareils-result") {
@@ -31,10 +32,9 @@ function filtreParTags() {
                         appareils.includes(valeur)
                     );
                 });
-
                 affichageDesRecettes(recettesFiltrees);
             }
-            if (tags[i].classList[1] == "ustensiles-result") {
+            if (tags[i].classList[1] == "ustensils-result") {
                 const valeur = [];
                 valeur.push(tags[i].innerText.toLowerCase());
                 // filtre les recettes par ustensiles
@@ -45,17 +45,12 @@ function filtreParTags() {
                     );
                 });
                 affichageDesRecettes(recettesFiltrees);
-
             }
         }
-    } else {
-        affichageDesRecettes(recipes);
+        if (tags.length == 0) {
+            affichageDesRecettes(recipes);
+        }
     }
-
-
-
-
 }
-
 
 export default filtreParTags;
