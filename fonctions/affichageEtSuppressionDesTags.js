@@ -14,6 +14,33 @@ function affichageEtSuppressionDesTags() {
                 filtreParTags();
             }
             const closeBtn = document.querySelectorAll(".tag");
+            const innerTextArray = Array.from(closeBtn).map(element => element.innerText.trim());
+            console.log(innerTextArray);
+
+            // Vérification des innerText
+            if (innerTextArray.length > 1) {
+                let hasDuplicateInnerText = false;
+
+                for (let i = 0; i < innerTextArray.length - 1; i++) {
+                    for (let j = i + 1; j < innerTextArray.length; j++) {
+                        if (innerTextArray[i] === innerTextArray[j]) {
+                            hasDuplicateInnerText = true;
+                            break;
+                        }
+                    }
+                    if (hasDuplicateInnerText) {
+                        break;
+                    }
+                }
+
+                if (hasDuplicateInnerText) {
+                    console.log("Il y a des éléments en double dans innerTextArray.");
+                    // Supprimer un des éléments en double ici
+                    closeBtn[closeBtn.length - 1].remove();
+                } else {
+                    console.log("Tous les éléments de innerTextArray sont uniques.");
+                }
+            }
             closeBtn.forEach((btn) => {
                 btn.addEventListener("click", () => {
                     btn.remove();

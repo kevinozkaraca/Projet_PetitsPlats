@@ -7,7 +7,6 @@ function filtreParTags() {
     // si il y a des tags
     if (tags.length <= 1) {
         // si deux tags sont identiques, on supprime le deuxième
-        console.log("Appelle de la fonction");
         for (let i = 0; i < tags.length; i++) {
             // filtrer en fonction de la class du tags
             if (tags[i].classList[1] == "ingredients-result") {
