@@ -4,16 +4,33 @@
 
 ### La validation W3C
 
+## HTML
+
 <p align="center">
 <br>
 <img 
             class="IMGlink"
-            src="./images/validationW3C.png"
+            src="./images/validationW3CHTML.png"
             alt="Photo de l'équipe de travail"
             aria-label="Photo de l'équipe de travail"
             width= 90%
         />
 </p>
+
+## CSS
+
+<p align="center">
+<br>
+<img 
+            class="IMGlink"
+            src="./images/validationW3CCSS.png"
+            alt="Photo de l'équipe de travail"
+            aria-label="Photo de l'équipe de travail"
+            width= 90%
+        />
+</p>
+
+## Projet
 
 - Implémenter un système de recherches de recettes rapide
 - Respecter le design à la lettre
