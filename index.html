@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les petites plats</title>
-
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <header>
       <img src="images/logo.png" alt="Logo du site : 'Les petits plats'" />
       <h1>Les petits plats</h1>
     </header>
-    <section id="sectionRecherche">
+    <div id="sectionRecherche">
       <div id="barreDeRecherche">
         <input id="rechercheParMotClef" type="text" placeholder="Rechercher une recette" />
         <button type="submit" class="iconDeRecherche">
@@ -26,16 +24,14 @@
         <div id="rechercheParIngredient" class="ensembleBouttonsRecherche" data-type="ingrédients">
           <div class="flexBoxBoutton">
             <input type="text" name="ingredients" class="selectionDeTag" id="ingredients" placeholder="Ingrédients" />
-
             <div class="bouttonDeRecherche">
               <i class="fas fa-chevron-down" id="chevronIngredients"></i>
             </div>
           </div>
-          <div id="containerIngredientsr" class="containerListes">
+          <div id="containerIngredients" class="containerListes">
             <ul id="listeDesIngredients" class="bloquesDeListe"></ul>
           </div>
         </div>
-
         <div id="rechercheParAppareils" class="ensembleBouttonsRecherche" data-type="appareils">
           <div class="flexBoxBoutton">
             <input type="text" name="appareils" id="appareils" class="selectionDeTag" placeholder="Appareils" />
@@ -61,8 +57,8 @@
           </div>
         </div>
       </div>
-    </section>
-    <section id="containerPourData"></section>
+    </div>
+    <div id="containerPourData"></div>
     <script type="module" src="./script.js"></script>
     <script type="module" src="./recipes.js"></script>
     <script src="./fontawesome-free-6.4.0-web/js/all.min.js"></script>
