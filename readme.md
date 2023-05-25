@@ -1,6 +1,19 @@
 # Les petits plats
 
-## Visiter le site : https://kevinozkaraca.github.io/Projet_PetitsPlats/
+## 🔴 Visiter le site : https://kevinozkaraca.github.io/Projet_PetitsPlats/
+
+### La validation W3C
+
+<p align="center">
+<br>
+<img 
+            class="IMGlink"
+            src="./images/validationW3C.png"
+            alt="Photo de l'équipe de travail"
+            aria-label="Photo de l'équipe de travail"
+            width= 90%
+        />
+</p>
 
 - Implémenter un système de recherches de recettes rapide
 - Respecter le design à la lettre
