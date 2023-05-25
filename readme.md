@@ -1,5 +1,7 @@
 # Les petits plats
 
+## Visiter le site : https://kevinozkaraca.github.io/Projet_PetitsPlats/
+
 - Implémenter un système de recherches de recettes rapide
 - Respecter le design à la lettre
 - Réaliser deux algorithmes de recherche
