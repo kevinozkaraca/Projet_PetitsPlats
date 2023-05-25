@@ -2,7 +2,6 @@ import recipes from "./recipes.js";
 import filtreGeneralDesRecettes from "./fonctions/filtreGeneralDesRecettes.js";
 import affichageEtSuppressionDesTags from "./fonctions/affichageEtSuppressionDesTags.js";
 import filtreDesInputsDeCouleur from "./fonctions/filtreDesInputsDeCouleur.js";
-import filtreParTags from "./fonctions/filtreParTags.js";
 const appareilsChevron = document.getElementsByClassName("bouttonDeRecherche")[1];
 const ustensilsChevron = document.getElementsByClassName("bouttonDeRecherche")[2];
 const ingredientsChevron = document.getElementsByClassName("bouttonDeRecherche")[0];

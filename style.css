@@ -264,11 +264,11 @@ input {
 .ensembleBouttonsRecherche.Active div input {
   width: 630px;
 }
-.ensembleBouttonsRecherche.active .containerListes {
+.ensembleBouttonsRecherche.Active .containerListes {
   transform: scale(1);
 }
 
-.ensembleBouttonsRecherche.active {
+.ensembleBouttonsRecherche.Active {
   width: 630px;
 }
 /*
