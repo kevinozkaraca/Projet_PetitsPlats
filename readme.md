@@ -32,8 +32,11 @@
 
 ## Les deux branches du projet
 
-premiere branche : https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo1/fonctions/filtreGeneralDesRecettes.js
-deuxieme branche : https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo2/fonctions/filtreGeneralDesRecettes.js
+premiere branche :
+https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo1/fonctions/filtreGeneralDesRecettes.js
+
+deuxieme branche :
+https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo2/fonctions/filtreGeneralDesRecettes.js
 
 ## Projet
 
