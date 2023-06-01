@@ -13,7 +13,7 @@ function filtreGeneralDesRecettes(recipes) {
     rechercheInput.addEventListener("input", (e) => {
         const valeur = e.target.value.toLowerCase();
         if (valeur.length >= 3) {
-            // filtre les recettes par nom, ingredients, appareils ou ustensiles
+            // filtre les recettes par nom, ingredients, appareils ou ustensiles :
             const recettesFiltrees = recipes.filter((recipe) => {
                 const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
                 const appareils = recipe.appliance.toLowerCase();
