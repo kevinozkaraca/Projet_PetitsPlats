@@ -14,17 +14,30 @@ function filtreGeneralDesRecettes(recipes) {
         const valeur = e.target.value.toLowerCase();
         if (valeur.length >= 3) {
             // filtre les recettes par nom, ingredients, appareils ou ustensiles :
-            const recettesFiltrees = recipes.filter((recipe) => {
-                const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
+            const recettesFiltrees = [];
+            for (let i = 0; i < recipes.length; i++) {
+                const recipe = recipes[i];
+                const ingredients = [];
+                for (let j = 0; j < recipe.ingredients.length; j++) {
+                    const ingredient = recipe.ingredients[j].ingredient.toLowerCase();
+                    ingredients.push(ingredient);
+                }
                 const appareils = recipe.appliance.toLowerCase();
-                const ustensiles = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
-                return (
+                const ustensiles = [];
+                for (let k = 0; k < recipe.ustensils.length; k++) {
+                    const ustensil = recipe.ustensils[k].toLowerCase();
+                    ustensiles.push(ustensil);
+                }
+
+                if (
                     recipe.name.toLowerCase().includes(valeur) ||
                     ingredients.some((ingredient) => ingredient.includes(valeur)) ||
                     appareils.includes(valeur) ||
                     ustensiles.some((ustensil) => ustensil.includes(valeur))
-                );
-            });
+                ) {
+                    recettesFiltrees.push(recipe);
+                }
+            }
             affichageDesRecettes(recettesFiltrees);
             if (recettesFiltrees.length == 0) {
                 plusDeRecette();
