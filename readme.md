@@ -32,8 +32,8 @@
 
 ## Les deux branches du projet
 
-premiere branche apres merge : fd7919c4b4ea90999f127735d2705fdb071f1d2c
-deuxieme branche apres merge : .....
+premiere branche : https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo1/fonctions/filtreGeneralDesRecettes.js
+deuxieme branche : https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo2/fonctions/filtreGeneralDesRecettes.js
 
 ## Projet
 
