@@ -3,12 +3,6 @@ import { affichageDesRecettes } from "../script.js";
 import plusDeRecette from "./plusDeRecette.js";
 function filtreGeneralDesRecettes(recipes) {
     const rechercheInput = document.querySelector("#rechercheParMotClef");
-    const rechercheIngredient = document.querySelector("#ingredients");
-    const rechercheAppareil = document.querySelector("#appareils");
-    const rechercheUstensile = document.querySelector("#ustensiles");
-    const listeDesAppareils = document.querySelector("#listeDesAppareils");
-    const listeDesIngredients = document.querySelector("#listeDesIngredients");
-    const listeDesUstensils = document.querySelector("#listeDesUstensils");
     // Filtrer les recettes par mot clé
     rechercheInput.addEventListener("input", (e) => {
         const valeur = e.target.value.toLowerCase();

@@ -32,11 +32,17 @@
 
 ## Les deux branches du projet
 
-premiere branche :
+### premiere branche :
+
 https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo1/fonctions/filtreGeneralDesRecettes.js
 
-deuxieme branche :
+### deuxieme branche :
+
 https://github.com/kevinozkaraca/Projet_PetitsPlats/blob/algo2/fonctions/filtreGeneralDesRecettes.js
+
+## Comparaison des deux branches
+
+Lien à ouvrir ici : https://jsben.ch/7UmqR
 
 ## Projet
 
@@ -73,7 +79,7 @@ La syntaxe générale de la fonction filter en JavaScript est la suivante :
 array.filter(callback(element, index, array), thisArg);
 ```
 
-où array est le tableau sur lequel la fonction filter est appliquée, callback est une fonction qui prend trois arguments (l'élément courant, l'index de l'élément courant et le tableau lui-même) et renvoie true ou false en fonction du critère, et thisArg (facultatif) est la valeur à utiliser comme this lorsque la fonction callback est exécutée.
+array est le tableau sur lequel la fonction filter est appliquée, callback est une fonction qui prend trois arguments (l'élément courant, l'index de l'élément courant et le tableau lui-même) et renvoie true ou false en fonction du critère, et thisArg (facultatif) est la valeur à utiliser comme this lorsque la fonction callback est exécutée.
 
 Voici un exemple pour illustrer son fonctionnement :
 
