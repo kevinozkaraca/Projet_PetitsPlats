@@ -119,69 +119,56 @@ function toggleList(e, index, input, placeholder, chevron, placeholders) {
     }
 }
 
-ingredientsChevron.addEventListener("click", (e) => {
-    toggleList(e, 0, ingredientsInput, "Ingrédients", ingredientsChevron, [
-        [appareilsInput, "Appareil", appareilsChevron],
-        [ustensilsInput, "Ustensile", ustensilsChevron],
-    ]);
-    selectionDeTag[1].placeholder = "Appareil";
-    selectionDeTag[2].placeholder = "Ustensile";
-    appareilsChevron.style.transform = "rotate(0deg)";
-    ustensilsChevron.style.transform = "rotate(0deg)";
-    ingredientsChevron.style.transform = "rotate(180deg)";
-});
+function addClickEventListener(element, index, inputElement, placeholderText, chevronElement, otherElements) {
+    element.addEventListener("click", (e) => {
+        toggleList(e, index, inputElement, placeholderText, chevronElement, otherElements);
+        for (let i = 0; i < otherElements.length; i++) {
+            selectionDeTag[i].placeholder = otherElements[i][1];
+            otherElements[i][2].style.transform = "rotate(0deg)";
+        }
+        chevronElement.style.transform = "rotate(180deg)";
+    });
+}
 
-appareilsChevron.addEventListener("click", (e) => {
-    toggleList(e, 1, appareilsInput, "Appareils", appareilsChevron, [
-        [ingredientsInput, "Ingrédient", ingredientsChevron],
-        [ustensilsInput, "Ustensile", ustensilsChevron],
-    ]);
-    selectionDeTag[0].placeholder = "Ingrédient";
-    selectionDeTag[2].placeholder = "Ustensile";
-    appareilsChevron.style.transform = "rotate(180deg)";
-    ustensilsChevron.style.transform = "rotate(0deg)";
-    ingredientsChevron.style.transform = "rotate(0deg)";
-});
+addClickEventListener(ingredientsChevron, 0, ingredientsInput, "Ingrédients", ingredientsChevron, [
+    [appareilsInput, "Appareil", appareilsChevron],
+    [ustensilsInput, "Ustensile", ustensilsChevron],
+]);
 
-ustensilsChevron.addEventListener("click", (e) => {
-    toggleList(e, 2, ustensilsInput, "Ustensiles", ustensilsChevron, [
-        [ingredientsInput, "Ingrédient", ingredientsChevron],
-        [appareilsInput, "Appareil", appareilsChevron],
-    ]);
-    selectionDeTag[0].placeholder = "Ingrédient";
-    selectionDeTag[1].placeholder = "Appareil";
-    appareilsChevron.style.transform = "rotate(0deg)";
-    ustensilsChevron.style.transform = "rotate(180deg)";
-    ingredientsChevron.style.transform = "rotate(0deg)";
-});
-function affichageDesIngredients(recipes) {
+addClickEventListener(appareilsChevron, 1, appareilsInput, "Appareils", appareilsChevron, [
+    [ingredientsInput, "Ingrédient", ingredientsChevron],
+    [ustensilsInput, "Ustensile", ustensilsChevron],
+]);
+
+addClickEventListener(ustensilsChevron, 2, ustensilsInput, "Ustensiles", ustensilsChevron, [
+    [ingredientsInput, "Ingrédient", ingredientsChevron],
+    [appareilsInput, "Appareil", appareilsChevron],
+]);
+function affichageDesInformations(recipes) {
     const ingredients = recipes.flatMap((recipe) =>
         recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
     );
     const uniqueIngredients = [...new Set(ingredients)].sort();
-
     listeDesIngredients.innerHTML = uniqueIngredients
         .map((ingredient) => {
-            return `<li class="item ingredients-result" data-value="${ingredient}" >${ingredient}</li> `;
+            return `<li class="item ingredients-result" data-value="${ingredient}">${ingredient}</li>`;
         })
         .join("");
-}
-function affichageDesAppareils(recipes) {
+
     const appareils = [...new Set(recipes.map((recipe) => recipe.appliance.toLowerCase()))].sort();
     listeDesAppareils.innerHTML = appareils
         .map((appareil) => {
-            return `<li  class="item appareils-result" data - value="${appareil}" >${appareil}</li > `;
+            return `<li class="item appareils-result" data-value="${appareil}">${appareil}</li>`;
         })
         .join("");
-}
-function affichageDesUstensiles(recipes) {
+
     const ustensils = recipes.reduce((acc, recipe) => {
         return [...acc, ...recipe.ustensils];
     }, []);
     const uniqueUstensils = [...new Set(ustensils.map((ustensil) => ustensil.toLowerCase()))].sort();
     listeDesUstensils.innerHTML = uniqueUstensils
         .map((ustensil) => {
-            return `<li class="item ustensils-result" data - value="${ustensil}" >${ustensil}</li > `;
+            return `<li class="item ustensils-result" data-value="${ustensil}">${ustensil}</li>`;
         })
         .join("");
 }
@@ -189,12 +176,11 @@ function affichageDesUstensiles(recipes) {
 // fonction de base de l'application
 async function init() {
     affichageDesRecettes(recipes);
-    affichageDesAppareils(recipes);
-    affichageDesUstensiles(recipes);
-    affichageDesIngredients(recipes);
+    affichageDesInformations(recipes);
     filtreGeneralDesRecettes(recipes);
     filtreDesInputsDeCouleur();
     affichageEtSuppressionDesTags();
+    addClickEventListener();
 }
 init();
 

@@ -1,5 +1,6 @@
 import recipes from "../recipes.js";
 import { affichageDesRecettes } from "../script.js";
+import plusDeRecette from "./plusDeRecette.js";
 // Description: Permet de filtrer les recettes par tags
 function filtreParTags() {
     // récupération des tags
@@ -32,6 +33,9 @@ function filtreParTags() {
         });
 
         affichageDesRecettes(recettesFiltrees);
+        if (recettesFiltrees.length == 0) {
+            plusDeRecette();
+        }
     }
     // s'il n'y a pas de tags
     if (tags.length === 0 || tags.length === undefined) {
