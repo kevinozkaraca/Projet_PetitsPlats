@@ -144,6 +144,7 @@ addClickEventListener(ustensilsChevron, 2, ustensilsInput, "Ustensiles", ustensi
     [ingredientsInput, "Ingrédient", ingredientsChevron],
     [appareilsInput, "Appareil", appareilsChevron],
 ]);
+
 function affichageDesInformations(recipes) {
     const ingredients = recipes.flatMap((recipe) =>
         recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase())
